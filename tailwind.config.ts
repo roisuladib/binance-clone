@@ -1,20 +1,171 @@
-import type { Config } from "tailwindcss";
+import { Sevillana } from 'next/font/google';
+import type { Config } from 'tailwindcss';
+import { fontFamily } from 'tailwindcss/defaultTheme';
 
-const config: Config = {
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  theme: {
-    extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+const config = {
+   darkMode: ['class'],
+   content: [
+      './pages/**/*.{ts,tsx}',
+      './components/**/*.{ts,tsx}',
+      './app/**/*.{ts,tsx}',
+      './src/**/*.{ts,tsx}',
+   ],
+   prefix: '',
+   theme: {
+      container: {
+         center: true,
+         padding: '2rem',
+         screens: {
+            '2xl': '1400px',
+         },
       },
-    },
-  },
-  plugins: [],
-};
+      extend: {
+         colors: {
+            //
+            sell: 'var(--color-sell)',
+            textSell: 'var(--color-textSell)',
+            sellHover: 'var(--color-sellHover)',
+            depthSellBg: 'var(--color-depthSellBg)',
+            buy: 'var(--color-buy)',
+            textBuy: 'var(--color-textBuy)',
+            buyHover: 'var(--color-buyHover)',
+            depthBuyBg: 'var(--color-depthBuyBg)',
+            line: 'var(--color-line)',
+            outlineHover: 'var(--color-outlineHover)',
+            primary: 'var(--color-primary)',
+            primaryHover: 'var(--color-primaryHover)',
+            error: 'var(--color-error)',
+            errorBg: 'var(--color-errorBg)',
+            success: 'var(--color-success)',
+            successBg: 'var(--color-successBg)',
+            disable: 'var(--color-disable)',
+            iconNormal: 'var(--color-iconNormal)',
+            textWhite: 'var(--color-textWhite)',
+            textGray: 'var(--color-textGray)',
+            textBlack: 'var(--color-textBlack)',
+            textPrimary: 'var(--color-textPrimary)',
+            textSecondary: 'var(--color-textSecondary)',
+            textThird: 'var(--color-textThird)',
+            textDisabled: 'var(--color-textDisabled)',
+            textBrand: 'var(--color-textBrand)',
+            textToast: 'var(--color-textToast)',
+            bg: 'var(--color-bg)',
+            bg1: 'var(--color-bg1)',
+            bg2: 'var(--color-bg2)',
+            bg3: 'var(--color-bg3)',
+            bg4: 'var(--color-bg4)',
+            bg6: 'var(--color-bg6)',
+            bg7: 'var(--color-bg7)',
+            popupBg: 'var(--color-popupBg)',
+            badgeBg: 'var(--color-badgeBg)',
+            selectedBg: 'var(--color-selectedBg)',
+            gradientBrand: 'var(--color-gradientBrand)',
+            gradientPrimary: 'var(--color-gradientPrimary)',
+            BasicBg: 'var(--color-BasicBg)',
+            SecondaryBg: 'var(--color-SecondaryBg)',
+            Input: 'var(--color-Input)',
+            InputLine: 'var(--color-InputLine)',
+            CardBg: 'var(--color-CardBg)',
+            Vessel: 'var(--color-Vessel)',
+            Line: 'var(--color-Line)',
+            DisableBtn: 'var(--color-DisableBtn)',
+            DisabledText: 'var(--color-DisabledText)',
+            TertiaryText: 'var(--color-TertiaryText)',
+            SecondaryText: 'var(--color-SecondaryText)',
+            PrimaryText: 'var(--color-PrimaryText)',
+            RedGreenBgText: 'var(--color-RedGreenBgText)',
+            TextOnGray: 'var(--color-TextOnGray)',
+            TextOnYellow: 'var(--color-TextOnYellow)',
+            IconNormal: 'var(--color-IconNormal)',
+            LiteBg1: 'var(--color-LiteBg1)',
+            LiteBg2: 'var(--color-LiteBg2)',
+            BadgeBg: 'var(--color-BadgeBg)',
+            OutlineHover: 'var(--color-OutlineHover)',
+            BtnBg: 'var(--color-BtnBg)',
+            PrimaryYellow: 'var(--color-PrimaryYellow)',
+            TextLink: 'var(--color-TextLink)',
+            TextToast: 'var(--color-TextToast)',
+            DepthSellBg: 'var(--color-DepthSellBg)',
+            SellHover: 'var(--color-SellHover)',
+            Sell: 'var(--color-Sell)',
+            TextSell: 'var(--color-TextSell)',
+            DepthBuyBg: 'var(--color-DepthBuyBg)',
+            BuyHover: 'var(--color-BuyHover)',
+            Buy: 'var(--color-Buy)',
+            TextBuy: 'var(--color-TextBuy)',
+            ErrorBg: 'var(--color-ErrorBg)',
+            Error: 'var(--color-Error)',
+            SuccessBg: 'var(--color-SuccessBg)',
+            Success: 'var(--color-Success)',
+            TagBg: 'var(--color-TagBg)',
+            Grid: 'var(--color-Grid)',
+            Placeholder: 'var(--color-Placeholder)',
+            ToastBg: 'var(--color-ToastBg)',
+            TwoColorIcon: 'var(--color-TwoColorIcon)',
+            //
+
+            border: 'hsl(var(--border))',
+            input: 'hsl(var(--input))',
+            ring: 'hsl(var(--ring))',
+            background: 'hsl(var(--background))',
+            foreground: 'hsl(var(--foreground))',
+            primary: {
+               DEFAULT: 'hsl(var(--primary))',
+               foreground: 'hsl(var(--primary-foreground))',
+            },
+            secondary: {
+               DEFAULT: 'hsl(var(--secondary))',
+               foreground: 'hsl(var(--secondary-foreground))',
+            },
+            destructive: {
+               DEFAULT: 'hsl(var(--destructive))',
+               foreground: 'hsl(var(--destructive-foreground))',
+            },
+            muted: {
+               DEFAULT: 'hsl(var(--muted))',
+               foreground: 'hsl(var(--muted-foreground))',
+            },
+            accent: {
+               DEFAULT: 'hsl(var(--accent))',
+               foreground: 'hsl(var(--accent-foreground))',
+            },
+            popover: {
+               DEFAULT: 'hsl(var(--popover))',
+               foreground: 'hsl(var(--popover-foreground))',
+            },
+            card: {
+               DEFAULT: 'hsl(var(--card))',
+               foreground: 'hsl(var(--card-foreground))',
+            },
+         },
+         borderRadius: {
+            lg: 'var(--radius)',
+            md: 'calc(var(--radius) - 2px)',
+            sm: 'calc(var(--radius) - 4px)',
+         },
+         keyframes: {
+            'accordion-down': {
+               from: { height: '0' },
+               to: { height: 'var(--radix-accordion-content-height)' },
+            },
+            'accordion-up': {
+               from: { height: 'var(--radix-accordion-content-height)' },
+               to: { height: '0' },
+            },
+         },
+         animation: {
+            'accordion-down': 'accordion-down 0.2s ease-out',
+            'accordion-up': 'accordion-up 0.2s ease-out',
+         },
+         fontFamily: {
+            sans: ['var(--font-sans)', ...fontFamily.sans],
+         },
+         maxWidth: {
+            screen: '100vw',
+         },
+      },
+   },
+   plugins: [require('tailwindcss-animate')],
+} satisfies Config;
+
 export default config;

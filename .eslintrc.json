@@ -1,3 +1,22 @@
 {
-  "extends": "next/core-web-vitals"
+   "extends": ["next/core-web-vitals", "prettier"],
+   "rules": {
+      "indent": ["warn", 3],
+      "max-len": [
+         "warn",
+         { "code": 100, "ignoreUrls": true, "ignorePattern": "\\s*className\\s*=" }
+      ],
+      "no-console": "warn",
+      "no-unused-vars": [
+         "error",
+         {
+            "vars": "all",
+            "args": "none",
+            "ignoreRestSiblings": false,
+            "argsIgnorePattern": "^_"
+         }
+      ],
+      "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": false }],
+      "semi": ["error", "always"]
+   }
 }
