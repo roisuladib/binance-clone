@@ -3,7 +3,7 @@
    "rules": {
       "indent": ["warn", 3],
       "max-len": [
-         "warn",
+         "off",
          { "code": 100, "ignoreUrls": true, "ignorePattern": "\\s*className\\s*=" }
       ],
       "no-console": "warn",

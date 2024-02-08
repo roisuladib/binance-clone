@@ -6,7 +6,7 @@ import { Inter as FontSans } from 'next/font/google';
 import { cn } from '^/lib/utils';
 import dynamic from 'next/dynamic';
 
-export const fontSans = FontSans({
+const fontSans = FontSans({
    subsets: ['latin'],
    variable: '--font-sans',
 });

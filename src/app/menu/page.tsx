@@ -75,17 +75,17 @@ export default function Menu() {
                         </NavigationMenuLink>
                      </li>
                      <ListItem
-                        href="/docs"
+                        href="/markets"
                         title="Introduction">
                         Re-usable components built using Radix UI and Tailwind CSS.
                      </ListItem>
                      <ListItem
-                        href="/docs/installation"
+                        href="/markets"
                         title="Installation">
                         How to install dependencies and structure your app.
                      </ListItem>
                      <ListItem
-                        href="/docs/primitives/typography"
+                        href="/markets"
                         title="Typography">
                         Styles for headings, paragraphs, lists...etc
                      </ListItem>
@@ -109,7 +109,7 @@ export default function Menu() {
             </NavigationMenuItem>
             <NavigationMenuItem>
                <Link
-                  href="/docs"
+                  href="/"
                   legacyBehavior
                   passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
