@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import type { Locale } from '^/i18n';
 import { getDictionary } from '^/utils';
 
