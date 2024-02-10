@@ -1,5 +1,4 @@
-import { Ripples } from '^/components';
-import { Button } from '^/components/ui/button';
+import { Button, Ripples } from '^/components';
 
 export default function Trade() {
    return (

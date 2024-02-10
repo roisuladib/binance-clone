@@ -5,11 +5,15 @@ import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
 import { cn } from '^/lib/utils';
 import dynamic from 'next/dynamic';
+import { i18n, type Locale } from '^/i18n';
 
 const fontSans = FontSans({
    subsets: ['latin'],
    variable: '--font-sans',
 });
+
+const HeaderLazy = dynamic(() => import('../../components/Header'));
+const FooterLazy = dynamic(() => import('../../components/Footer'));
 
 const siteConfig = {
    title: 'Binance',
@@ -17,6 +21,10 @@ const siteConfig = {
       'Trade BTC to USDT and other cryptocurrencies in the world’s largest cryptocurrency exchange. Find real-time live price with technical indicators to help you analyze BTC/USDT changes.',
    url: 'https://binance.roisuladib.vercel.app',
 };
+
+export async function generateStaticParams() {
+   return i18n.locales.map(locale => ({ lang: locale }));
+}
 
 export const metadata: Metadata = {
    metadataBase: new URL(siteConfig.url),
@@ -84,21 +92,24 @@ export const metadata: Metadata = {
    },
 };
 
-const HeaderLazy = dynamic(() => import('../components/Header'));
-
 export default function RootLayout({
    children,
+   params,
 }: Readonly<{
    children: React.ReactNode;
+   params: { lang: Locale };
 }>) {
    return (
       <html
-         lang="en"
+         lang={params.lang}
          className="dark"
          suppressHydrationWarning>
          <body className={cn('min-h-svh bg-background font-sans antialiased', fontSans.variable)}>
-            <HeaderLazy />
-            {children}
+            <div className="flex min-h-screen flex-col overflow-hidden">
+               <HeaderLazy />
+               <main className="flex grow flex-col">{children}</main>
+               <FooterLazy />
+            </div>
          </body>
       </html>
    );
