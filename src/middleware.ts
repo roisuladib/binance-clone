@@ -12,12 +12,14 @@ function getLocale(request: NextRequest): string | undefined {
    request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
 
    // @ts-ignore locales are readonly
-   const locales: string[] = i18n.locales;
+   const availableLocales: string[] = i18n.locales;
 
    // Use negotiator and intl-localematcher to get best locale
-   let languages = new Negotiator({ headers: negotiatorHeaders }).languages(locales);
+   let requestedLocales = new Negotiator({ headers: negotiatorHeaders }).languages(
+      availableLocales,
+   );
 
-   const locale = matchLocale(languages, locales, i18n.defaultLocale);
+   const locale = matchLocale(requestedLocales, availableLocales, i18n.defaultLocale);
 
    return locale;
 }
@@ -29,13 +31,8 @@ export function middleware(request: NextRequest) {
    // // If you have one
    // if (
    //    [
-   //       '/favicon/android-chrome-192x192.png',
-   //       '/favicon/android-chrome-512x512.png',
-   //       '/favicon/apple-touch-icon.png',
-   //       '/favicon/favicon-16x16.png',
-   //       '/favicon/favicon-32x32.png',
-   //       '/favicon/favicon.ico',
-   //       '/favicon/site.webmanifest',
+   //       '/favicon.ico',
+   //       '/site.webmanifest',
    //       // Your other files in `public`
    //    ].includes(pathname)
    // )
@@ -59,6 +56,12 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-   // Matcher ignoring `/_next/` and `/api/`
+   /*
+    * Match all request paths except for the ones starting with:
+    * - api (API routes)
+    * - _next/static (static files)
+    * - _next/image (image optimization files)
+    * - favicon (favicon folder)
+    */
    matcher: ['/((?!api|_next/static|_next/image|favicon).*)'],
 };

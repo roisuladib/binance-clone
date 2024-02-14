@@ -5,6 +5,7 @@ import { forwardRef, useEffect, useState } from 'react';
 import Link from 'next/link';
 
 import {
+   LocaleSwitcher,
    NavigationMenu,
    NavigationMenuContent,
    NavigationMenuItem,
@@ -13,7 +14,7 @@ import {
    NavigationMenuTrigger,
    navigationMenuTriggerStyle,
 } from '^/components';
-import { IcBinance } from '^/assets';
+import { Icons } from '^/assets';
 import { cn } from '^/lib/utils';
 
 import styles from './styles.module.css';
@@ -66,7 +67,7 @@ export default function Header() {
       <header className="relative flex h-16 max-w-screen justify-between bg-bg1 px-6">
          <div className="flex items-center gap-6">
             <Link href="/">
-               <IcBinance />
+               <Icons.Binance />
             </Link>
             <div className="relative flex h-16 items-center">
                <Link
@@ -137,25 +138,19 @@ export default function Header() {
                   </NavigationMenuItem>
                   <NavigationMenuItem>
                      <Link
-                        href="/"
+                        href="/earn"
                         legacyBehavior
                         passHref>
                         <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                           Documentation
+                           Earn
                         </NavigationMenuLink>
                      </Link>
                   </NavigationMenuItem>
                </NavigationMenuList>
             </NavigationMenu>
-            <div className="relative flex h-16 items-center">
-               <Link
-                  href="/trade"
-                  className="relative flex h-full items-center text-sm font-medium text-textPrimary hover:text-textBrand">
-                  Earn
-               </Link>
-            </div>
          </div>
-         <div className="flex items-center gap-4">
+         <div className="flex">
+            <LocaleSwitcher />
             <button
                type="button"
                onClick={() => setIsDarkMode(!isDarkMode)}
